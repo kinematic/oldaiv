@@ -50,8 +50,24 @@ class SitesSearch extends Sites
         ]);
 
         $this->load($params);
+		
+		if($params['r'] == 'import/sites/new') {
+			$query->leftJoin('rbs_sites.sites', 'rbs_mustang.sites.siteid = rbs_sites.sites.id');
+			$query->innerJoin('rbs_sites.sitesregion', 'rbs_mustang.sites.regionid = rbs_sites.sitesregion.id');
+			$query->where('rbs_sites.sites.id IS NULL');
+			$query->andWhere('rbs_mustang.sites.statusid <> 7');
+			$query->andWhere('rbs_sites.sitesregion.mustangimport');
+			$query->orderBy('rbs_mustang.sites.typeid, rbs_mustang.sites.regionid, rbs_mustang.sites.nr');
+		}
 
-        if (!$this->validate()) {
+        if($params['r'] == 'import/sites/notdefsites') {
+			$query->leftJoin('rbs_sites.sites', 'rbs_mustang.sites.siteid = rbs_sites.sites.id');
+			$query->innerJoin('rbs_sites.sitesregion', 'rbs_mustang.sites.regionid = rbs_sites.sitesregion.id');
+			$query->where('rbs_sites.sites.id IS NULL');
+			$query->orderBy('rbs_mustang.sites.nr');
+		}
+		
+		if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;

@@ -17,14 +17,14 @@ $this->params['breadcrumbs'][] = $this->title;
 		'items' => [
 			[
 				'label' => 'импортировать',
-				'url' => ['site/load'],
+				'url' => ['import/sites/load'],
 				// 'linkOptions' => [...],
 			],
 			[
 				'label' => 'показать',
 				'items' => [
-					 ['label' => 'новые сайты', 'url' => '#'],
-					 ['label' => 'нераспознанные сайты', 'url' => '#'],
+					 ['label' => 'новые сайты', 'url' => 'index.php?r=import/sites/new'],
+					 ['label' => 'нераспознанные сайты', 'url' => 'index.php?r=import/sites/notdefsites'],
 					 ['label' => 'обновления', 'url' => '#'],
 					 ['label' => 'сайты, которых нет в мустанге', 'url' => '#'],
 					 ['label' => 'нет МОЛа', 'url' => '#'],
@@ -55,10 +55,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'object',
-            'planedaddress:ntext',
+            // 'planedaddress:ntext',
             //'realaddress:ntext',
             //'mol',
-            //'status',
+            'status',
             //'inventory',
             //'lastinventorydate',
             //'juricaladdress:ntext',
@@ -66,9 +66,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'startdate',
             //'closedate',
             //'contractor',
-            //'typeid',
-            //'regionid',
-            //'nr',
+            'typeid',
+            'regionid',
+            'nr',
             //'siteid',
             //'statusid',
             //'molid',

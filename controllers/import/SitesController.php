@@ -44,10 +44,19 @@ class SitesController extends Controller
         ]);
     }
 	
-	public function actionClear()
+	public function actionNew()
     {
-		Yii::$app->db->createCommand()->truncateTable('rbs_mustang.sites')->execute();
+        $searchModel = new SitesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+	
+	public function actionNotdefsites()
+    {
         $searchModel = new SitesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
