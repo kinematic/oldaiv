@@ -55,7 +55,18 @@ class SitesController extends Controller
         ]);
     }
 	
-	public function actionNotdefsites()
+	public function actionNotdefs()
+    {
+        $searchModel = new SitesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+	
+	public function actionNonexists()
     {
         $searchModel = new SitesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

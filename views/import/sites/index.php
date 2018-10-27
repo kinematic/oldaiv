@@ -24,9 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => 'показать',
 				'items' => [
 					 ['label' => 'новые сайты', 'url' => 'index.php?r=import/sites/new'],
-					 ['label' => 'нераспознанные сайты', 'url' => 'index.php?r=import/sites/notdefsites'],
-					 ['label' => 'обновления', 'url' => '#'],
-					 ['label' => 'сайты, которых нет в мустанге', 'url' => '#'],
+					 ['label' => 'нераспознанные сайты', 'url' => 'index.php?r=import/sites/notdefs'],
+					 // ['label' => 'обновления', 'url' => '#'],
+					 ['label' => 'сайты, которых нет в Мустанге', 'url' => 'index.php?r=import/sites/nonexists'],
 					 ['label' => 'нет МОЛа', 'url' => '#'],
 					 ['label' => 'дубликаты', 'url' => '#'],
 					 ['label' => 'сайты без объекта', 'url' => '#'],
@@ -44,6 +44,13 @@ $this->params['breadcrumbs'][] = $this->title;
 		'options' => ['class' =>'nav-pills'], // set this to nav-tab to get tab-styled navigation
 	]);
 	?>
+	<?php 
+	if($this->context->action->id == 'new') $this->title = 'Новые сайты';
+	if($this->context->action->id == 'notdefs') $this->title = 'Нераспознанные сайты';
+	
+	?>
+
+
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -55,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'object',
-            // 'planedaddress:ntext',
+            'planedaddress:ntext',
             //'realaddress:ntext',
             //'mol',
             'status',
