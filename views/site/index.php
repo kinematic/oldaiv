@@ -13,6 +13,10 @@ $this->title = 'Старый AIV';
                 <h2>Сайты</h2>
                 <p><a class="btn btn-default" href="index.php?r=sites/sitesregion">Регионы &raquo;</a></p>
             </div>
+			<div class="col-lg-4">
+                <h2>Адреса</h2>
+                <p><a class="btn btn-default" href="index.php?r=address/typenp">Типы населенных пунктов &raquo;</a></p>
+            </div>
             <div class="col-lg-4">
                 <h2>Люди</h2>
                 <p><a class="btn btn-default" href="index.php?r=people/users">Пользователи &raquo;</a></p>
